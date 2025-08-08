@@ -1,24 +1,25 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+img = plt.imread('C:/Users/ASUS/Desktop/Python3/misc/5.3.01.tiff')
 image_01 = plt.imread('C:/Users/ASUS/Desktop/Python3/misc/4.1.03.tiff')
+img_02 = plt.imread('C:/Users/ASUS/Desktop/Python3/misc/indexed_GIF.gif')  
 
-r = image_01.copy() 
-g = image_01.copy()
-b = image_01.copy()
+plt.figure(figsize=(12, 4))
+plt.subplot(1, 3, 1)
+plt.title("RGB Image")
+plt.imshow(image_01)
+plt.axis('off')
 
-r[:,:,[1,2]]=0
-g[:,:,[0,2]]=0
-b[:,:,[0,1]]=0
+plt.subplot(1, 3, 2)
+plt.title("Grayscale Image")
+plt.imshow(img, cmap='gray')
+plt.axis('off')
 
-output = [image_01,r,g,b]
-titles = ['image','RED','GREEN','BLUE']
-
-for i in range(4):
-    plt.subplot(1,4,i+1)
-    plt.axis('off')
-    plt.title(titles[i])
-    plt.imshow(output[i])
-    
+plt.subplot(1, 3, 3)
+plt.title("Indexed Image")
+plt.imshow(img_02)
+plt.axis('off')
+plt.tight_layout()
 plt.show()
 
